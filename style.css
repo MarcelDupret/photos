@@ -1,20 +1,20 @@
 :root {
-  --color-universe: #3A2200;
-  --color-deep: #6F4A00;
-  --color-tech: #C28A00;
-  --color-dev: #E7B400;
-  --color-footer: #FFE109;
+  --color-universe: #0A1A0A;
+  --color-deep: #1A3A1A;
+  --color-tech: #2E7D32;
+  --color-dev: #4CAF50;
+  --color-footer: #81C784;
   --color-new-black: #0D0D0D;
   --color-white-snow: #F4F5F6;
-  --shadow-color: rgba(199, 138, 0, 0.35);
-  --shadow-color-soft: rgba(199, 138, 0, 0.2);
-  --shadow-color-strong: rgba(199, 138, 0, 0.6);
-  --accent-color: #D9A31A;
-  --accent-border: rgba(217, 163, 26, 0.45);
-  --accent-glow: rgba(217, 163, 26, 0.2);
-  --accent-glow-soft: rgba(217, 163, 26, 0.12);
-  --accent-glow-very-soft: rgba(217, 163, 26, 0.04);
-  --accent-highlight: rgba(217, 163, 26, 0.25);
+  --shadow-color: rgba(46, 125, 50, 0.35);
+  --shadow-color-soft: rgba(46, 125, 50, 0.2);
+  --shadow-color-strong: rgba(46, 125, 50, 0.6);
+  --accent-color: #4CAF50;
+  --accent-border: rgba(76, 175, 80, 0.45);
+  --accent-glow: rgba(76, 175, 80, 0.2);
+  --accent-glow-soft: rgba(76, 175, 80, 0.12);
+  --accent-glow-very-soft: rgba(76, 175, 80, 0.04);
+  --accent-highlight: rgba(76, 175, 80, 0.25);
 }
 
 * {
@@ -41,8 +41,8 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(199, 138, 0, 0.15);
-  border: 1px solid rgba(199, 138, 0, 0.4);
+  background: var(--accent-glow-soft);
+  border: 1px solid var(--accent-border);
   color: var(--color-white-snow);
   width: 48px;
   height: 48px;
@@ -59,7 +59,7 @@ body {
 .sound-btn:hover {
   background: var(--color-dev);
   border-color: var(--color-white-snow);
-  box-shadow: 0 0 15px rgba(199, 138, 0, 0.6);
+  box-shadow: 0 0 15px var(--shadow-color-strong);
   transform: scale(1.05);
 }
 
@@ -72,8 +72,8 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(1, 12, 83, 0.4);
-  border: 1px solid rgba(199, 138, 0, 0.3);
+  background: rgba(10, 26, 10, 0.4);
+  border: 1px solid var(--accent-border);
   color: var(--color-white-snow);
   width: 56px;
   height: 56px;
@@ -193,7 +193,7 @@ body.dragging * {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-bottom: 2px solid rgba(199, 138, 0, 0.1);
+  border-bottom: 2px solid var(--accent-glow-soft);
   padding-bottom: 12px;
 }
 
@@ -234,8 +234,8 @@ body.dragging * {
 
 /* Individual Sticker Slots */
 .sticker-slot {
-  background-color: rgba(1, 22, 118, 0.03);
-  border: 2px dashed rgba(199, 138, 0, 0.35);
+  background-color: rgba(46, 125, 50, 0.03);
+  border: 2px dashed rgba(46, 125, 50, 0.35);
   border-radius: 6px;
   padding: 10px;
   display: flex;
@@ -249,9 +249,9 @@ body.dragging * {
 }
 
 .sticker-slot:hover {
-  background-color: rgba(199, 138, 0, 0.05);
+  background-color: rgba(46, 125, 50, 0.05);
   border-color: var(--color-dev);
-  box-shadow: inset 0 0 10px rgba(199, 138, 0, 0.1);
+  box-shadow: inset 0 0 10px rgba(46, 125, 50, 0.1);
 }
 
 .special-slot {
@@ -260,7 +260,7 @@ body.dragging * {
   width: 65%;
   min-height: 165px;
   border-color: var(--color-dev);
-  background-color: rgba(199, 138, 0, 0.02);
+  background-color: rgba(46, 125, 50, 0.02);
 }
 
 .slot-number {
@@ -268,7 +268,7 @@ body.dragging * {
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--color-tech);
-  background: rgba(199, 138, 0, 0.08);
+  background: rgba(46, 125, 50, 0.08);
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -282,7 +282,7 @@ body.dragging * {
 .sticker-slot:hover .slot-number {
   background: var(--color-dev);
   color: var(--color-white-snow);
-  box-shadow: 0 0 10px rgba(199, 138, 0, 0.3);
+  box-shadow: 0 0 10px rgba(46, 125, 50, 0.3);
 }
 
 .slot-name {
@@ -366,7 +366,7 @@ body.dragging * {
 
 .slot-preenchido:hover {
   border-color: var(--color-tech) !important;
-  box-shadow: 0 4px 16px rgba(199, 138, 0, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.2) !important;
 }
 
 /* Page Footer */
@@ -383,7 +383,7 @@ body.dragging * {
 /* CAPA (Cover) CSS */
 .page-cover {
   background-color: #070709;
-  background-image: radial-gradient(circle at center, #0e1220 0%, #060608 100%);
+  background-image: radial-gradient(circle at center, #0e1a12 0%, #060806 100%);
   color: var(--color-white-snow);
   border: 1px solid var(--accent-glow);
   box-shadow: inset 0 0 40px var(--accent-glow-soft);
@@ -456,7 +456,7 @@ body.dragging * {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 10px;
-  color: #d9a31a;
+  color: var(--accent-color);
   margin-bottom: 25px;
   text-shadow: 0 0 10px var(--accent-glow);
 }
@@ -497,17 +497,16 @@ body.dragging * {
 }
 
 .sphere-core {
-  width: 132px;
-  height: 132px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle, #d9a31a 0%, #814207 100%);
+  background: radial-gradient(circle, #2e7d32 0%, #1b5e20 100%);
   box-shadow: 0 0 25px var(--shadow-color-strong), inset 0 0 10px rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  animation: spherePulse 4s infinite ease-in-out;
 }
 
 .art-logo {
@@ -516,65 +515,6 @@ body.dragging * {
   stroke: var(--color-white-snow);
   stroke-width: 2;
   fill: none;
-}
-
-.sphere-ring {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 195px;
-  height: 195px;
-  border: 1.5px solid var(--accent-border);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.sphere-ring.ring-1 {
-  transform: translate(-50%, -50%) rotateX(70deg) rotateY(15deg);
-  animation: spinRing1 8s infinite linear;
-  border-top-color: transparent;
-}
-
-.sphere-ring.ring-2 {
-  transform: translate(-50%, -50%) rotateX(15deg) rotateY(70deg);
-  animation: spinRing2 8s infinite linear;
-  border-bottom-color: transparent;
-}
-
-@keyframes spherePulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px var(--shadow-color-strong);
-  }
-
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 35px var(--shadow-color-strong);
-  }
-}
-
-@keyframes spinRing1 {
-  0% {
-    transform: translate(-50%, -50%) rotateX(70deg) rotateY(15deg) rotateZ(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotateX(70deg) rotateY(15deg) rotateZ(360deg);
-  }
-}
-
-@keyframes spinRing2 {
-  0% {
-    transform: translate(-50%, -50%) rotateX(15deg) rotateY(70deg) rotateZ(360deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotateX(15deg) rotateY(70deg) rotateZ(0deg);
-  }
 }
 
 .cover-footer-text {
