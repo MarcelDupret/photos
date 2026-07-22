@@ -100,11 +100,11 @@
         import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
 
         const urlParams = new URLSearchParams(window.location.search);
-        const nomeAlbum = urlParams.get('album') || 'contemplacao';
+        const nomeAlbum = urlParams.get('album') || 'Lua';
         const fotoInicial = parseInt(urlParams.get('foto')) || 0;
 
         const albumTitleEl = document.getElementById('album-title');
-        albumTitleEl.textContent = nomeAlbum.charAt(0).toUpperCase() + nomeAlbum.slice(1);
+        albumTitleEl.textContent = nomeAlbum;
 
         fetch(`albuns/${nomeAlbum}.json`)
             .then(response => response.json())
