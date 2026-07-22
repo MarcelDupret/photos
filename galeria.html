@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Marcel Dupret</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #0D0D0D;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            overflow: hidden;
+            background-image: radial-gradient(circle at center, #1A3A1A 0%, #0A1A0A 60%, #0D0D0D 100%);
+        }
+        .btn-voltar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(76, 175, 80, 0.2);
+            color: #fff;
+            border: 1px solid rgba(76, 175, 80, 0.45);
+            padding: 10px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 100;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .btn-voltar:hover {
+            background: rgba(76, 175, 80, 0.4);
+            border-color: #4CAF50;
+            box-shadow: 0 0 15px rgba(46, 125, 50, 0.3);
+        }
+        .album-title {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            z-index: 100;
+        }
+        .swiper {
+            width: 100%;
+            max-width: 640px;
+            padding: 20px 0;
+        }
+        .swiper-slide {
+            width: 80px;
+            height: 80px;
+            opacity: 0.4;
+            transition: opacity 0.3s, transform 0.3s;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .swiper-slide-thumb-active {
+            opacity: 1;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 12px rgba(46, 125, 50, 0.4);
+            transform: scale(1.1);
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .pswp__bg {
+            background: #0D0D0D;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-voltar">← Voltar ao Livro</a>
+    <span class="album-title" id="album-title">Álbum</span>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="gallery-thumbs"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const nomeAlbum = urlParams.get('album') || 'contemplacao';
+        const fotoInicial = parseInt(urlParams.get('foto')) || 0;
+
+        const albumTitleEl = document.getElementById('album-title');
+        albumTitleEl.textContent = nomeAlbum.charAt(0).toUpperCase() + nomeAlbum.slice(1);
+
+        fetch(`albuns/${nomeAlbum}.json`)
+            .then(response => response.json())
+            .then(imagens => {
+                inicializarGaleria(imagens, fotoInicial);
+            })
+            .catch(err => {
+                console.error("Erro ao carregar o álbum:", err);
+                document.getElementById('gallery-thumbs').innerHTML =
+                    '<div style="color:#fff;text-align:center;padding:40px;">Erro ao carregar álbum. Verifique se o arquivo JSON existe.</div>';
+            });
+
+        function inicializarGaleria(imagens, indexInicial) {
+            const containerThumbs = document.getElementById('gallery-thumbs');
+
+            const imagensFundo = imagens.map(img => ({
+                src: img.src,
+                w: img.w || 1200,
+                h: img.h || 900,
+                title: img.title || '',
+                alt: img.title || ''
+            }));
+
+            imagens.forEach(img => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `<img src="${img.thumb}" alt="${img.title || 'Miniatura'}">`;
+                containerThumbs.appendChild(slide);
+            });
+
+            const swiper = new Swiper(".mySwiper", {
+                spaceBetween: 10,
+                slidesPerView: "auto",
+                freeMode: true,
+                watchSlidesProgress: true,
+                centeredSlides: true
+            });
+
+            const lightbox = new PhotoSwipeLightbox({
+                dataSource: imagensFundo,
+                pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js')
+            });
+            lightbox.init();
+
+            setTimeout(() => {
+                lightbox.loadAndOpen(indexInicial);
+                swiper.slideTo(indexInicial);
+            }, 100);
+
+            document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+                slide.addEventListener('click', () => {
+                    swiper.slideTo(index);
+                    if (lightbox.pswp) lightbox.pswp.goTo(index);
+                    else lightbox.loadAndOpen(index);
+                });
+            });
+
+            lightbox.on('change', () => {
+                if (lightbox.pswp) swiper.slideTo(lightbox.pswp.currIndex);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "src": "img/01-Animais.jpg",
+    "thumb": "img/01-Animais.jpg",
+    "title": "Animais",
+    "description": "Admirar a natureza"
+  },
+  {
+    "src": "img/02-Cachoeiras.jpg",
+    "thumb": "img/02-Cachoeiras.jpg",
+    "title": "Cachoeiras",
+    "description": "Admirar a natureza"
+  },
+  {
+    "src": "img/03-Lua.jpg",
+    "thumb": "img/03-Lua.jpg",
+    "title": "Lua",
+    "description": "Admirar a natureza"
+  },
+  {
+    "src": "img/04-Pássaros.jpg",
+    "thumb": "img/04-Pássaros.jpg",
+    "title": "Pássaros",
+    "description": "Admirar a natureza"
+  },
+  {
+    "src": "img/05-Sol.jpg",
+    "thumb": "img/05-Sol.jpg",
+    "title": "Sol",
+    "description": "Admirar a natureza"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "src": "img/06-Cidades.jpg",
+    "thumb": "img/06-Cidades.jpg",
+    "title": "Cidades",
+    "description": "Acalmar os pensamentos"
+  },
+  {
+    "src": "img/07-Flores.jpg",
+    "thumb": "img/07-Flores.jpg",
+    "title": "Flores",
+    "description": "Acalmar os pensamentos"
+  },
+  {
+    "src": "img/08-Lagos.jpg",
+    "thumb": "img/08-Lagos.jpg",
+    "title": "Lagos",
+    "description": "Acalmar os pensamentos"
+  },
+  {
+    "src": "img/09-Montanhas.jpg",
+    "thumb": "img/09-Montanhas.jpg",
+    "title": "Montanhas",
+    "description": "Acalmar os pensamentos"
+  },
+  {
+    "src": "img/10-Praias.jpg",
+    "thumb": "img/10-Praias.jpg",
+    "title": "Praias",
+    "description": "Acalmar os pensamentos"
+  }
+]

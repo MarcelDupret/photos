@@ -178,6 +178,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // A função é async, chamamos sem await para não bloquear a inicialização do álbum
         preencherFigurinhas();
 
+        // Dia 5: Navegação para a galeria ao clicar em uma figurinha
+        document.querySelectorAll(".sticker-slot[data-album]").forEach(slot => {
+            slot.addEventListener("click", (e) => {
+                if (e.target.closest(".sticker-slot")) {
+                    const album = slot.getAttribute("data-album");
+                    const index = slot.getAttribute("data-index") || 0;
+                    window.location.href = `galeria.html?album=${album}&foto=${index}`;
+                }
+            });
+        });
+
     } catch (error) {
         console.error("Erro ao inicializar a biblioteca PageFlip:", error);
     }
