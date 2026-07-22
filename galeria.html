@@ -107,15 +107,21 @@
         albumTitleEl.textContent = nomeAlbum;
 
         fetch(`albuns/${nomeAlbum}.json`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status} - arquivo não encontrado`);
+                return response.json();
+            })
             .then(imagens => {
                 inicializarGaleria(imagens, fotoInicial);
             })
             .catch(err => {
                 console.error("Erro ao carregar o álbum:", err);
                 document.getElementById('gallery-thumbs').innerHTML =
-                    '<div style="color:#fff;text-align:center;padding:40px;">Erro ao carregar álbum. Verifique se o arquivo JSON existe.</div>';
-            });
+                    `<div style="color:#ff6b6b;text-align:center;padding:40px;font-size:1rem;">
+                        <p>Erro ao carregar álbum "${nomeAlbum}"</p>
+                        <p style="font-size:0.8rem;opacity:0.7;margin-top:8px;">${err.message}</p>
+                        <p style="font-size:0.8rem;opacity:0.5;margin-top:16px;">Dica: abra com um servidor HTTP local (ex: python3 -m http.server)</p>
+                    </div>`;
 
         function inicializarGaleria(imagens, indexInicial) {
             const containerThumbs = document.getElementById('gallery-thumbs');
