@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const paginaAlvo = parseInt(paginaUrl);
             if (!isNaN(paginaAlvo) && paginaAlvo > 0 && paginaAlvo <= 2) {
                 setTimeout(() => {
-                    pageFlip.flip(paginaAlvo);
+                    pageFlip.turnToPage(paginaAlvo);
                 }, 500);
             }
         }
