@@ -96,48 +96,46 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
-
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+    <script>
         const urlParams = new URLSearchParams(window.location.search);
         const nomeAlbum = urlParams.get('album') || 'Lua';
         const fotoInicial = parseInt(urlParams.get('foto')) || 0;
 
-        const albumTitleEl = document.getElementById('album-title');
-        albumTitleEl.textContent = nomeAlbum;
+        document.getElementById('album-title').textContent = nomeAlbum;
 
         fetch(`albuns/${nomeAlbum}.json`)
             .then(response => {
-                if (!response.ok) throw new Error(`HTTP ${response.status} - arquivo não encontrado`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 return response.json();
             })
             .then(imagens => {
                 inicializarGaleria(imagens, fotoInicial);
             })
             .catch(err => {
-                console.error("Erro ao carregar o álbum:", err);
+                console.error("Erro:", err);
                 document.getElementById('gallery-thumbs').innerHTML =
-                    `<div style="color:#ff6b6b;text-align:center;padding:40px;font-size:1rem;">
-                        <p>Erro ao carregar álbum "${nomeAlbum}"</p>
-                        <p style="font-size:0.8rem;opacity:0.7;margin-top:8px;">${err.message}</p>
-                        <p style="font-size:0.8rem;opacity:0.5;margin-top:16px;">Dica: abra com um servidor HTTP local (ex: python3 -m http.server)</p>
+                    `<div style="color:#ff6b6b;text-align:center;padding:40px;">
+                        <p>Erro ao carregar álbum "${nomeAlbum}": ${err.message}</p>
                     </div>`;
+            });
 
         function inicializarGaleria(imagens, indexInicial) {
             const containerThumbs = document.getElementById('gallery-thumbs');
 
             const imagensFundo = imagens.map(img => ({
                 src: img.src,
-                w: img.w || 1200,
-                h: img.h || 900,
-                title: img.title || '',
-                alt: img.title || ''
+                w: 1600,
+                h: 1200,
+                msrc: img.thumb,
+                title: img.title || ''
             }));
 
-            imagens.forEach(img => {
+            imagens.forEach((img, i) => {
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
-                slide.innerHTML = `<img src="${img.thumb}" alt="${img.title || 'Miniatura'}">`;
+                slide.innerHTML = `<img src="${img.thumb}" alt="${img.title || ''}" data-index="${i}">`;
                 containerThumbs.appendChild(slide);
             });
 
@@ -151,26 +149,31 @@
 
             const lightbox = new PhotoSwipeLightbox({
                 dataSource: imagensFundo,
-                pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js')
+                pswpModule: PhotoSwipe,
+                loop: false,
+                bgOpacity: 0.95
             });
             lightbox.init();
-
-            setTimeout(() => {
-                lightbox.loadAndOpen(indexInicial);
-                swiper.slideTo(indexInicial);
-            }, 100);
-
-            document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
-                slide.addEventListener('click', () => {
-                    swiper.slideTo(index);
-                    if (lightbox.pswp) lightbox.pswp.goTo(index);
-                    else lightbox.loadAndOpen(index);
-                });
-            });
 
             lightbox.on('change', () => {
                 if (lightbox.pswp) swiper.slideTo(lightbox.pswp.currIndex);
             });
+
+            containerThumbs.addEventListener('click', (e) => {
+                const slide = e.target.closest('.swiper-slide');
+                if (!slide) return;
+                const idx = parseInt(slide.querySelector('img').getAttribute('data-index'));
+                swiper.slideTo(idx);
+                lightbox.loadAndOpen(idx);
+            });
+
+            setTimeout(() => {
+                swiper.slideTo(indexInicial);
+                const allSlides = containerThumbs.querySelectorAll('.swiper-slide');
+                if (allSlides[indexInicial]) {
+                    allSlides[indexInicial].click();
+                }
+            }, 200);
         }
     </script>
 </body>
