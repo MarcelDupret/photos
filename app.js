@@ -184,10 +184,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (e.target.closest(".sticker-slot")) {
                     const album = slot.getAttribute("data-album");
                     const index = slot.getAttribute("data-index") || 0;
-                    window.location.href = `galeria.html?album=${album}&foto=${index}`;
+                    const pagina = slot.getAttribute("data-pagina") || '1';
+                    window.location.href = `galeria.html?album=${album}&foto=${index}&pagina=${pagina}`;
                 }
             });
         });
+
+        // Dia 6: Voltar para a página correta ao retornar da galeria
+        const paginaUrl = new URLSearchParams(window.location.search).get('pagina');
+        if (paginaUrl) {
+            const paginaAlvo = parseInt(paginaUrl);
+            if (!isNaN(paginaAlvo) && paginaAlvo > 0 && paginaAlvo <= 2) {
+                setTimeout(() => pageFlip.flip(paginaAlvo, 'bottom'), 150);
+            }
+        }
 
     } catch (error) {
         console.error("Erro ao inicializar a biblioteca PageFlip:", error);

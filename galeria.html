@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <a href="index.html" class="btn-voltar">← Voltar ao Livro</a>
+    <a href="index.html" class="btn-voltar" id="btn-voltar">← Voltar ao Livro</a>
     <span class="album-title" id="album-title">Álbum</span>
 
     <div class="swiper mySwiper">
@@ -102,8 +102,10 @@
         const urlParams = new URLSearchParams(window.location.search);
         const nomeAlbum = urlParams.get('album') || 'Lua';
         const fotoInicial = parseInt(urlParams.get('foto')) || 0;
+        const paginaVoltar = urlParams.get('pagina') || '1';
 
         document.getElementById('album-title').textContent = nomeAlbum;
+        document.getElementById('btn-voltar').href = `index.html?pagina=${paginaVoltar}`;
 
         fetch(`albuns/${nomeAlbum}.json`)
             .then(response => {
