@@ -292,16 +292,6 @@ body.dragging * {
   margin-bottom: 2px;
 }
 
-.slot-role {
-  font-size: 0.72rem;
-  color: #626C84;
-}
-
-/* ===================================================
-   FIGURINHAS PREENCHIDAS (adicionado no Dia 3)
-   Estilos para as imagens inseridas via JavaScript
-   =================================================== */
-
 .sticker-img {
   position: absolute;
   inset: 0;
@@ -320,9 +310,8 @@ body.dragging * {
   overflow: hidden;
 }
 
-/* Esconde número e role quando há imagem no slot */
-.sticker-slot:has(.sticker-img) .slot-number,
-.sticker-slot:has(.sticker-img) .slot-role {
+/* Esconde número quando há imagem no slot */
+.sticker-slot:has(.sticker-img) .slot-number {
   display: none;
 }
 
@@ -345,7 +334,6 @@ body.dragging * {
   pointer-events: none;
 }
 
-/* Animação de "colar" a figurinha */
 @keyframes sticker-aparecer {
   from {
     opacity: 0;
@@ -358,7 +346,6 @@ body.dragging * {
   }
 }
 
-/* Slot quando a figurinha está colada (imagem carregou com sucesso) */
 .slot-preenchido {
   border-style: solid !important;
   border-color: var(--color-dev) !important;
@@ -464,7 +451,7 @@ body.dragging * {
 .cover-art {
   position: relative;
   width: 250px;
-  height: 290px;
+  height: 250px;
   border: 1px solid var(--accent-glow-soft);
   border-radius: 12px;
   background: rgba(7, 8, 14, 0.7);
@@ -485,11 +472,10 @@ body.dragging * {
     linear-gradient(to bottom, var(--accent-glow-very-soft) 1px, transparent 1px);
 }
 
-/* Central Glowing 3D Tech Sphere */
 .tech-sphere {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -510,8 +496,8 @@ body.dragging * {
 }
 
 .art-logo {
-  width: 120px;
-  height: 110px;
+  width: 190px;
+  height: 190px;
   stroke: var(--color-white-snow);
   stroke-width: 2;
   fill: none;
@@ -531,8 +517,6 @@ body.dragging * {
   color: var(--color-white-snow);
   opacity: 0.5;
 }
-
-
 
 /* CONTRACAPA (Back Cover) CSS */
 .page-cover-back {
@@ -685,10 +669,6 @@ body.dragging * {
 
   .slot-name {
     font-size: 0.8rem;
-  }
-
-  .slot-role {
-    font-size: 0.65rem;
   }
 
   .cover-content {
