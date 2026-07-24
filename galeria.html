@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria - Marcel Dupret</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             background: #0D0D0D;
@@ -20,6 +28,7 @@
             overflow: hidden;
             background-image: radial-gradient(circle at center, #1A3A1A 0%, #0A1A0A 60%, #0D0D0D 100%);
         }
+
         .btn-voltar {
             position: fixed;
             top: 20px;
@@ -36,29 +45,33 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(4px);
         }
+
         .btn-voltar:hover {
             background: rgba(76, 175, 80, 0.4);
             border-color: #4CAF50;
             box-shadow: 0 0 15px rgba(46, 125, 50, 0.3);
         }
+
         .album-title {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-family: 'Outfit', sans-serif;
             font-size: 1.2rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             z-index: 100;
         }
+
         .gallery-container {
             display: flex;
             flex-direction: column;
             height: 100vh;
             padding: 80px 20px 20px;
         }
+
         .main-image-wrapper {
             flex: 1;
             display: flex;
@@ -67,6 +80,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .main-image {
             max-width: 100%;
             max-height: 100%;
@@ -76,31 +90,36 @@
             transition: opacity 0.2s ease;
             cursor: zoom-in;
         }
+
         .main-image.loading {
             opacity: 0.3;
         }
+
         .main-image.zoomable {
             cursor: grab;
         }
+
         .main-image.zoomable:active {
             cursor: grabbing;
         }
+
         .image-info {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
             text-align: center;
             pointer-events: none;
         }
+
         .nav-hint {
             position: absolute;
             bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.75rem;
             text-align: center;
             pointer-events: none;
@@ -108,24 +127,28 @@
             gap: 20px;
             align-items: center;
         }
+
         .nav-hint kbd {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 4px;
             padding: 4px 8px;
             font-family: inherit;
             font-size: 0.7rem;
         }
+
         .thumbs-section {
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px 0 40px;
         }
+
         .swiper {
             width: 100%;
             padding: 10px 0;
         }
+
         .swiper-slide {
             width: 90px;
             height: 90px;
@@ -135,28 +158,41 @@
             border-radius: 6px;
             overflow: hidden;
         }
+
         .swiper-slide-thumb-active {
             opacity: 1;
             border: 3px solid #4CAF50;
             transform: scale(1.1);
             z-index: 10;
         }
+
         .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 4px;
         }
+
         @media (max-width: 600px) {
-            .swiper-slide { width: 70px; height: 70px; }
-            .gallery-container { padding: 70px 15px 15px; }
-            .nav-hint { display: none; }
+            .swiper-slide {
+                width: 70px;
+                height: 70px;
+            }
+
+            .gallery-container {
+                padding: 70px 15px 15px;
+            }
+
+            .nav-hint {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <a href="index.html" class="btn-voltar" id="btn-voltar">← Voltar ao Livro</a>
+    <a href="index.html" class="btn-voltar" id="btn-voltar">← Voltar</a>
     <span class="album-title" id="album-title">Álbum</span>
 
     <div class="gallery-container">
@@ -164,7 +200,8 @@
             <img class="main-image" id="main-image" src="" alt="Imagem principal" />
             <div class="image-info" id="image-info"></div>
             <div class="nav-hint">
-                <kbd>←</kbd> <span>Anterior</span> <kbd>→</kbd> <span>Próxima</span> • <kbd>Scroll</kbd> <span>Zoom</span>
+                <kbd>←</kbd> <span>Anterior</span> <kbd>→</kbd> <span>Próxima</span> • <kbd>Scroll</kbd>
+                <span>Zoom</span>
             </div>
         </div>
         <div class="thumbs-section">
@@ -205,7 +242,7 @@
             const mainImage = document.getElementById('main-image');
             const imageInfo = document.getElementById('image-info');
             const mainWrapper = document.getElementById('main-image-wrapper');
-            
+
             let currentIndex = indexInicial;
             let isZoomed = false;
             let zoomLevel = 1;
@@ -230,14 +267,14 @@
 
             function updateMainImage(index) {
                 if (index < 0 || index >= imagens.length) return;
-                
+
                 currentIndex = index;
                 const img = imagens[index];
-                
+
                 mainImage.classList.add('loading');
                 mainImage.src = img.src;
                 imageInfo.textContent = img.title || '';
-                
+
                 // Reset zoom/pan
                 zoomLevel = 1;
                 panX = 0;
@@ -245,10 +282,10 @@
                 isZoomed = false;
                 mainImage.style.transform = 'translate(0, 0) scale(1)';
                 mainImage.classList.remove('zoomable');
-                
+
                 mainImage.onload = () => mainImage.classList.remove('loading');
                 mainImage.onerror = () => mainImage.classList.remove('loading');
-                
+
                 swiper.slideTo(index);
                 updateActiveThumb(index);
             }
@@ -393,4 +430,5 @@
         }
     </script>
 </body>
+
 </html>

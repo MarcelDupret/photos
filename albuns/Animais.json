@@ -1,7 +1,62 @@
 [
   {
-    "src": "img/01-Animais.jpg",
-    "thumb": "img/01-Animais.jpg",
-    "title": "Animais"
+    "src": "img/Animais/Animal_1.JPG",
+    "thumb": "img/Animais/Animal_1.JP",
+    "title": "Marapé - AL - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_2.JPG",
+    "thumb": "img/Animais/Animal_2.JP",
+    "title": "Bonito - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_3.JPG",
+    "thumb": "img/Animais/Animal_3.JP",
+    "title": "Miranda - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_4.JPG",
+    "thumb": "img/Animais/Animal_4.JP",
+    "title": "Miranda - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_5.JPG",
+    "thumb": "img/Animais/Animal_5.JP",
+    "title": "Miranda - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_6.JPG",
+    "thumb": "img/Animais/Animal_6.JP",
+    "title": "Miranda - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_7.JPG",
+    "thumb": "img/Animais/Animal_7.JP",
+    "title": "Bonito - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_8.JPG",
+    "thumb": "img/Animais/Animal_8.JP",
+    "title": "Bonito - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_9.JPG",
+    "thumb": "img/Animais/Animal_9.JP",
+    "title": "Bonito - MS - Brasil"
+  },
+  {
+    "src": "img/Animais/Animal_10.JPG",
+    "thumb": "img/Animais/Animal_10.JP",
+    "title": "Baltimore - Estados Unidos"
+  },
+  {
+    "src": "img/Animais/Animal_11.JPG",
+    "thumb": "img/Animais/Animal_11.JP",
+    "title": "Itupeva - SP - São Paulo"
+  },
+  {
+    "src": "img/Animais/Animal_12.JPG",
+    "thumb": "img/Animais/Animal_12.JP",
+    "title": "Serra da Canastra - MG - Brasil"
   }
 ]
