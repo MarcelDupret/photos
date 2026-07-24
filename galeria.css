@@ -94,33 +94,16 @@ body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
     text-align: center;
     pointer-events: none;
-}
-
-.nav-hint {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.75rem;
-    text-align: center;
-    pointer-events: none;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.nav-hint kbd {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-family: inherit;
-    font-size: 0.7rem;
+    background: rgba(20, 20, 20, 0.6);
+    padding: 6px 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .thumbs-section {
